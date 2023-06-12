@@ -5,6 +5,6 @@ class Solution:
         """
         n = len(arr)
         k %= n
-        arr[:n-k] = arr[:n-k][::-1]
-        arr[n-k:] = arr[n-k:][::-1]
+        arr[:n-k] = reversed(arr[:n-k])
+        arr[n-k:] = reversed(arr[n-k:])
         arr.reverse()
