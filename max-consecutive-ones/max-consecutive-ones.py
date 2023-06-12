@@ -5,7 +5,7 @@ class Solution:
         for i in nums:
             if i==1:
                 count+=1
+                ans = max(ans, count)
             else:
                 count=0
-            ans = max(ans, count)
         return ans
