@@ -3,9 +3,8 @@ class Solution:
         p = 0
         n = len(nums)
         for i in range(1, n):
-            if nums[i]!=nums[i-1]:
-                nums[p]=nums[i-1]
+            if nums[p]!=nums[i]:
+                nums[p+1]=nums[i]
                 p+=1
-        nums[p]=nums[n-1]
-        p+=1
-        return p
+
+        return (p+1)
