@@ -1,21 +1,15 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        lst = [[1]]
+        ans = []
+        for i in range(1,numRows+1):
+            temp = [1]
+            m = 1
+            for j in range(1,i):
+                m*=(i-j)
+                m//=j
+                temp.append(m)
+            ans.append(temp)
+        return ans
 
-        while len(lst)<numRows:
 
-            new_row=[1]
-            last_row=lst[-1]
-
-            for i in range(len(last_row)-1):
-                new_row.append(last_row[i] + last_row[i+1])
-
-            new_row +=[1]
-            lst.append(new_row)
-
-        return lst
-
- #       numRows = int(input())
-
-    #    print(pascals_triangle(numRows))
 
