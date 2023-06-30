@@ -4,12 +4,12 @@ class Solution:
         ans = []
         s = intervals[0][0]
         e = intervals[0][1]
-        for i in intervals:
-            if i[0] <= e:
-                e = max(e, i[1])
+        for x,y in intervals:
+            if x <= e:
+                e = max(e, y)
             else:
                 ans.append([s, e])
-                s = i[0]
-                e = i[1]
+                s = x
+                e = y
         ans.append([s, e])
         return ans
