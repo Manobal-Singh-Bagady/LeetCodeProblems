@@ -12,6 +12,7 @@ class Solution {
                 j++;
             }
         }
+        System.gc();
         return count;
     }
 }
