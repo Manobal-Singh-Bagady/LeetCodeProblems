@@ -8,7 +8,6 @@ class Solution {
             reversed = (reversed * 10) + (num % 10);
             num /= 10;
         }
-
         return reversed == x;
     }
 }
