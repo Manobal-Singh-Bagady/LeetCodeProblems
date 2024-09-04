@@ -9,11 +9,15 @@ class Solution {
 
     void reverse(int[] arr, int left, int right) {
         while (left < right) {
-            int temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
+            swap(arr, left, right);
             left++;
             right--;
         }
+    }
+
+    void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
