@@ -1,7 +1,7 @@
 class Solution {
     public void rotate(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++)
-            for (int j = i; j < matrix[i].length; j++)
+            for (int j =  i; j < matrix[i].length; j++)
                 swapMatrix(matrix, i, j, j, i);
 
         for (int i = 0; i < matrix.length; i++)
