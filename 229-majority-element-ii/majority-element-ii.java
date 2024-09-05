@@ -29,7 +29,7 @@ class Solution {
         }
         if (count1 > nums.length / 3)
             ans.add(ele1);
-        if (count2 > nums.length / 3 && ele2!=ele1)
+        if (count2 > nums.length / 3 && ele2 != ele1)
             ans.add(ele2);
         return ans;
     }
