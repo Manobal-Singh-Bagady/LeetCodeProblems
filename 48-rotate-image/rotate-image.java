@@ -3,6 +3,7 @@ class Solution {
         for (int i = 0; i < matrix.length; i++)
             for (int j = i; j < matrix[i].length; j++)
                 swapMatrix(matrix, i, j, j, i);
+
         for (int i = 0; i < matrix.length; i++)
             reverse(matrix[i], 0, matrix[i].length - 1);
     }
@@ -25,6 +26,5 @@ class Solution {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-
     }
 }
