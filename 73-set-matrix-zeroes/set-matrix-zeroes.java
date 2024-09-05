@@ -7,7 +7,6 @@ class Solution {
                     zeros.add(new Integer[] { i, j });
             }
         }
-
         for (Integer[] zero : zeros) {
             for (int i = 0; i < matrix.length; i++)
                 matrix[i][zero[1]] = 0;
