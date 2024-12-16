@@ -5,11 +5,10 @@ class Solution:
             count[i] = count.get(i, 0)+1
         max_count = max(count.values())
 
-        print(count, max_count)
         ans = 0
         for i in count:
             if count[i]==max_count:
-                ans+=count[i]
+                ans+=max_count
         return ans
 
         
