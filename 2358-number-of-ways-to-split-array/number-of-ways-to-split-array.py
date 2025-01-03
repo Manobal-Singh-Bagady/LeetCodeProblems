@@ -1,3 +1,4 @@
+# Space complexity: O(n)
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
         sum = 0
