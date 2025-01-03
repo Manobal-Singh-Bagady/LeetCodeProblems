@@ -1,19 +1,17 @@
-# Space complexity: O(n)
+# Space complexity: O(1)
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
-        sum = 0
-        n = len(nums)
-        prefixSum = [0]*n
-        for i in range(n):
-            sum+=nums[n-i-1]
-            prefixSum[n-i-1]=sum
-        sum = 0
-        ans=0
-        for i in range(n-1):
-            sum+=nums[i]
-            if sum>=prefixSum[i+1]:
-                ans+=1
-        return ans
+        left_sum=0
+        right_sum=sum(nums)
+
+        count = 0
+        for i in range(len(nums)-1):
+            left_sum+=nums[i]
+            right_sum-=nums[i]
+            if left_sum>=right_sum:
+                count+=1
+        return count
+
 
 
         
