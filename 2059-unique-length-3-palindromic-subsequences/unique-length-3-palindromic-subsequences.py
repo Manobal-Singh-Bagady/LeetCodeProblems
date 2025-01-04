@@ -1,11 +1,17 @@
 class Solution:
     def countPalindromicSubsequence(self, s: str) -> int:
-        letters = set(s)
+        first = dict()
+        last = dict()
+        for i in range(len(s)):
+            letter = s[i]
+            if letter not in first:
+                first[letter]= i
+            last[letter] = i
+        
         ans = 0
-        for letter in letters:
-            i,j = s.index(letter), s.rindex(letter)
-            between = set(s[i+1:j])
-            ans+=len(between)
+        for letter in first:
+            ans+=len(set(s[first[letter]+1: last[letter]]))
         return ans
+
 
             
