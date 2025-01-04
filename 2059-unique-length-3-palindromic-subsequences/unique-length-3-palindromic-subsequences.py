@@ -11,6 +11,7 @@ class Solution:
         for char_index in char_indices.values():
             l = char_index[0] + 1
             r = char_index[-1]
-            unique_between = set(s[l:r])
-            ans += len(unique_between)
+            if l != r:
+                unique_between = set(s[l:r])
+                ans += len(unique_between)
         return ans
