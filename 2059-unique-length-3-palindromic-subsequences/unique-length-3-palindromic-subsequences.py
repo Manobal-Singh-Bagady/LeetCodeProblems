@@ -3,14 +3,16 @@ from collections import defaultdict
 
 class Solution:
     def countPalindromicSubsequence(self, s: str) -> int:
-        indices = defaultdict(list)
+        char_indices = defaultdict(list)
 
         for i, char in enumerate(s):
-            indices[char].append(i)
+            char_indices[char].append(i)
 
         ans = 0
-        for ind in indices.values():
-            l = ind[0]
-            r = ind[-1]
-            ans += len(set(s[l + 1 : r]))
+        for char_index in char_indices.values():
+            l = char_index[0] + 1
+            r = char_index[-1]
+            if l != r:
+                unique_between = set(s[l:r])
+                ans += len(unique_between)
         return ans
