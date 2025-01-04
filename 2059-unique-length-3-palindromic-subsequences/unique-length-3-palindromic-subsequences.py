@@ -9,9 +9,9 @@ class Solution:
 
         ans = 0
         for char_index in char_indices.values():
-            l = char_index[0] + 1
-            r = char_index[-1]
-            if l != r:
+            if len(char_index) > 1:
+                l = char_index[0] + 1
+                r = char_index[-1]
                 unique_between = set(s[l:r])
                 ans += len(unique_between)
         return ans
