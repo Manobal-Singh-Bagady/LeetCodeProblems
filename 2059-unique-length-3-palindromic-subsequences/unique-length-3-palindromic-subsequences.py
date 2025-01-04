@@ -4,7 +4,8 @@ class Solution:
         ans = 0
         for letter in letters:
             i,j = s.index(letter), s.rindex(letter)
-            ans+=len(set(s[i+1:j]))
+            between = set(s[i+1:j])
+            ans+=len(between)
         return ans
 
             
