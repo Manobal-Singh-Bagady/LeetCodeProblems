@@ -3,6 +3,10 @@ class Solution:
         ans = 0
         for letter in set(s):
             l, r = s.index(letter)+1, s.rindex(letter)
-            ans+=len(set(s[l:r]))
+            between = set()
+            for i in range(l, r):
+                if s[i] not in between:
+                    ans+=1
+                    between.add(s[i])
         return ans
 
