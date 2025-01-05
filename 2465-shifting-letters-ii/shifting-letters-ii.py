@@ -9,8 +9,8 @@ class Solution:
             if r+1<n:
                 shift_arr[r+1] += (-1 if inc else 1)
         
-        ans=''
         current_shift = 0
+        ans=''
         for i in range(n):
             current_shift+=shift_arr[i]
             current_chr = ord('a') + (ord(s[i])-ord('a')+current_shift)%26
