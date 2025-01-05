@@ -10,17 +10,10 @@ class Solution:
                 shift_arr[r+1] += (-1 if inc else 1)
         
         current_shift = 0
-        string = list(s)
+        ans=''
         for i in range(n):
             current_shift+=shift_arr[i]
-            # current_shift%=26
-            # current_chr=ord(string[i])
-            current_chr = ord('a') + (ord(string[i])-ord('a')+current_shift)%26
-            # current_chr+=current_shift
-            # if current_chr>ord('z'):
-            #     current_chr-=26
-            # if current_chr<ord('a'):
-            #     current_chr+=26
-            string[i]=chr(current_chr)
-        return ''.join(string)
+            current_chr = ord('a') + (ord(s[i])-ord('a')+current_shift)%26
+            ans+=chr(current_chr)
+        return ans
 
