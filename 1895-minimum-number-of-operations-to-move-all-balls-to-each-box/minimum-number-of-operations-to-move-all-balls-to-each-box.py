@@ -2,24 +2,18 @@
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         n = len(boxes)
-        ans = [0]*n
-        box_no = 0
-        steps = 0
-        for i in range(n):
-            steps+=box_no
-            ans[i]+=steps
-            box_no+=int(boxes[i])
+        ans = [0] * n
         
-        box_no = 0
-        steps = 0
+        boxes_left = 0
+        steps_left = 0
+        boxex_right = 0
+        steps_right = 0
         for i in range(n):
-            steps+=box_no
-            ans[n-i-1]+=steps
-            box_no+=int(boxes[n-i-1])
+            steps_left += boxes_left
+            ans[i] += steps_left
+            boxes_left += int(boxes[i])
+            steps_right += boxex_right
+            ans[n - i - 1] += steps_right
+            boxex_right += int(boxes[n - i - 1])
 
         return ans
-            
-
-
-
-
