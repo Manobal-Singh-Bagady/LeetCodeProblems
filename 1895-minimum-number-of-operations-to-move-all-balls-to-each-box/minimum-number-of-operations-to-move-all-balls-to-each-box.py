@@ -1,3 +1,4 @@
+# Simple solution O(2N)
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         n = len(boxes)
