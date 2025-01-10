@@ -1,6 +1,3 @@
-from collections import Counter
-
-
 class Solution:
     def wordSubsets(self, words1, words2):
         letter_count = dict()
