@@ -7,7 +7,12 @@ class Solution:
 
         ans = []
         for word in words1:
-            if all(word.count(letter) >= count2.get(letter) for letter in count2):
+            universal = True
+            for letter in count2:
+                if word.count(letter) < count2[letter]:
+                    universal = False
+                    break
+            if universal:
                 ans.append(word)
 
         return ans
