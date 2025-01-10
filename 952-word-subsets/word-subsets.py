@@ -12,11 +12,7 @@ class Solution:
         ans = []
         for word in words1:
             count = Counter(word)
-            universal = True
-            for letter in letter_count:
-                if count.get(letter, 0) < letter_count.get(letter):
-                    universal = False
-            if universal:
+            if all(count.get(letter, 0) >= letter_count.get(letter) for letter in letter_count):
                 ans.append(word)
 
         return ans
