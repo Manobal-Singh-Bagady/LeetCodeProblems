@@ -5,7 +5,7 @@ class Solution:
     def wordSubsets(self, words1, words2):
         letter_count = dict()
         for word in words2:
-            for letter in word:
+            for letter in set(word):
                 letter_count[letter] = max(letter_count.get(letter, 0), word.count(letter))
 
         ans = []
