@@ -10,7 +10,6 @@ class Solution:
 
         ans = []
         for word in words1:
-            count = Counter(word)
             if all(word.count(letter) >= letter_count.get(letter) for letter in letter_count):
                 ans.append(word)
 
