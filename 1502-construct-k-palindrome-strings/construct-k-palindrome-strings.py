@@ -6,8 +6,10 @@ class Solution:
             return False
 
         odds = 0
-        for chr in s:
-            odds^=1<<(ord(chr)-ord('a'))
-        if bin(odds).count('1')<=k:
+        for i in set(s):
+            if s.count(i) % 2:
+                odds += 1
+        
+        if odds <= k:
             return True
         return False
