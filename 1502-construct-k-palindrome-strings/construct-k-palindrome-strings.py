@@ -13,5 +13,4 @@ class Solution:
 
         if odds <= k:
             return True
-        else:
-            return False
+        return False
