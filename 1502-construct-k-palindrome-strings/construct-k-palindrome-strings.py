@@ -8,4 +8,6 @@ class Solution:
         odds = 0
         for chr in s:
             odds^=1<<(ord(chr)-ord('a'))
-        return bin(odds).count('1')<=k
+        if bin(odds).count('1')<=k:
+            return True
+        return False
