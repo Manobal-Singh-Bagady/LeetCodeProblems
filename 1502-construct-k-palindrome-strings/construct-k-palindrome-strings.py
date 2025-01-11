@@ -8,5 +8,8 @@ class Solution:
             return True
         if k > n:
             return False
-        map = Counter(s)
-        return sum(1 for i in map if map[i] % 2) <= k
+        odds = 0
+        for chr in s:
+            odds ^= 1 << (ord(chr) - ord("a"))
+
+        return bin(odds).count("1") <= k
