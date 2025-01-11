@@ -15,5 +15,8 @@ class Solution:
         for char in s:
             freq[ord(char)-ord('a')]+=1
 
-        odds = sum(1 for i in freq if i%2)
+        odds = 0
+        for i in freq:
+            if i%2:
+                odds+=1
         return odds<=k
