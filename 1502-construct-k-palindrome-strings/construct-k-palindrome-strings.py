@@ -9,7 +9,4 @@ class Solution:
         if k > n:
             return False
         map = Counter(s)
-        if sum(1 for i in map if map[i] % 2 != 0) > k:
-            return False
-        else:
-            return True
+        return sum(1 for i in map if map[i] % 2 != 0) <= k
