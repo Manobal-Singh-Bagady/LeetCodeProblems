@@ -11,4 +11,7 @@ class Solution:
             if s.count(i) % 2:
                 odds += 1
 
-        return odds <= k
+        if odds <= k:
+            return True
+        else:
+            return False
