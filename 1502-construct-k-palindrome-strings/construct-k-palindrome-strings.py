@@ -5,14 +5,10 @@ class Solution:
             return True
         if k > n:
             return False
-        
-        freq = [0]*26
-        for chr in s:
-            freq[ord(chr)-ord('a')]+=1
 
         odds = 0
-        for i in freq:
-            if i%2:
+        for i in set(s):
+            if s.count(i)%2:
                 odds+=1
         
         if odds<=k:
