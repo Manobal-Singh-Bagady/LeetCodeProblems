@@ -1,7 +1,6 @@
 class Solution:
     def canConstruct(self, s: str, k: int) -> bool:
-        n = len(s)
-        if k == n:
+        if k == (n:=len(s)):
             return True
         if k > n:
             return False
