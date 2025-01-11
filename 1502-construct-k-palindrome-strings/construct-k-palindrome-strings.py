@@ -1,6 +1,3 @@
-# from collections import Counter
-
-
 class Solution:
     def canConstruct(self, s: str, k: int) -> bool:
         n = len(s)
@@ -9,8 +6,15 @@ class Solution:
         if k > n:
             return False
         
-        odds = 0
+        freq = [0]*26
         for chr in s:
-            odds ^= 1 << (ord(chr) - ord("a"))
+            freq[ord(chr)-ord('a')]+=1
 
-        return bin(odds).count("1") <= k
+        odds = 0
+        for i in freq:
+            if i%2:
+                odds+=1
+        
+        if odds<=k:
+            return True
+        return False
