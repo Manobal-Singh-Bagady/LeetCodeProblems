@@ -34,9 +34,6 @@ class Solution:
                 return False
             if unlocked==0 and brackets==0:
                 return True
-        # while brackets and unlocked and brackets[-1] < unlocked[-1]:
-        #     brackets.pop()
-        #     unlocked.pop()
 
         if brackets>0:
             return False
