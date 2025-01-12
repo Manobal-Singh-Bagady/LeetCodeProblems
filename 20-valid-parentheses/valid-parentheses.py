@@ -2,24 +2,15 @@ class Solution:
     def isValid(self, s: str) -> bool:
         brackets = []
         for i in s:
-            if i=='(' or i=='[' or i=='{':
+            if i in "([{":
                 brackets.append(i)
-            elif i==')':
-                if brackets and brackets[-1]=='(':
-                    brackets.pop()
-                else:
+            else:
+                if (
+                    not brackets
+                    or (i == ")" and brackets[-1] != "(")
+                    or (i == "}" and brackets[-1] != "{")
+                    or (i == "]" and brackets[-1] != "[")
+                ):
                     return False
-            elif i=='}':
-                if brackets and brackets[-1]=='{':
-                    brackets.pop()
-                else:
-                    return False
-            elif i==']':
-                if brackets and brackets[-1]=='[':
-                    brackets.pop()
-                else:
-                    return False
-        if brackets:
-            return False
-        return True
-        
+                brackets.pop()
+        return not brackets
