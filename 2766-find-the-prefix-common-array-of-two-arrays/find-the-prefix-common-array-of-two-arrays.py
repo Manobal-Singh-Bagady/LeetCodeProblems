@@ -11,6 +11,6 @@ class Solution:
             #     count+=1
             # if freq[B[i]]==2 and A[i]!=B[i]:
             #     count+=1
-            ans.append(sum(1 for f in freq if f==2))
+            ans.append(freq.count(2))
         return ans
         
