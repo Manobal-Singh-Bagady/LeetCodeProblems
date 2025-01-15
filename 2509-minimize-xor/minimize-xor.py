@@ -6,8 +6,11 @@ class Solution:
         return num ^ 1 << bit
 
     def minimizeXor(self, num1: int, num2: int) -> int:
-        bits1 = bin(num1).count("1")
-        bits2 = bin(num2).count("1")
+        bin1 = bin(num1)
+        bin2 = bin(num2)
+
+        bits1 = bin1.count("1")
+        bits2 = bin2.count("1")
 
         if bits1 == bits2:
             return num1
