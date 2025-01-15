@@ -11,21 +11,13 @@ class Solution:
 
         if bits1 == bits2:
             return num1
-        
+
         ans = num1
         n = abs(bits2 - bits1)
         i = 0
-        check_bit = False if bits2>bits1 else True
-        # if bits2 > bits1:
-        #     while n:
-        #         if not self.check_setbit(ans, i):
-        #             ans = self.flip_bit(ans, i)
-        #             n -= 1
-        #         i += 1
-        #     return ans
-        # else:
+        check_bit = False if bits2 > bits1 else True
         while n:
-            if self.check_setbit(ans, i)==check_bit:
+            if self.check_setbit(ans, i) == check_bit:
                 ans = self.flip_bit(ans, i)
                 n -= 1
             i += 1
