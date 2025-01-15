@@ -3,6 +3,9 @@ class Solution:
         bits1 = bin(num1).count("1")
         bits2 = bin(num2).count("1")
 
+        if bits1==bits2:
+            return num1
+
         ans = num1
         n = abs(bits2 - bits1)
         i = 0
