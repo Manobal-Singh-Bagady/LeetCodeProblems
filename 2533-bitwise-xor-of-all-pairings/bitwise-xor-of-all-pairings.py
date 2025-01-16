@@ -5,30 +5,9 @@ class Solution:
 
         ans = 0
         if n1 & 1:
-            for num in nums2:
-                ans ^= num
+            for i in range(n2):
+                ans ^= nums2[i]
         if n2 & 1:
-            for num in nums1:
-                ans ^= num
+            for i in range(n1):
+                ans ^= nums1[i]
         return ans
-        # if n1&1:
-        #     if n2 & 1:
-        #         ans = 0
-        #         for i in nums2:
-        #             ans ^= i
-        #         for i in nums1:
-        #             ans^=i
-        #         return ans
-        #     else:
-        #         ans = 0
-        #         for i in nums2:
-        #             ans ^= i
-        #         return ans
-        # else:
-        #     if n2 & 1:
-        #         ans = 0
-        #         for i in nums1:
-        #             ans ^= i
-        #         return ans
-        #     else:
-        #         return 0
