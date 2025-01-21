@@ -8,7 +8,12 @@ class Solution:
         for i in range(len(grid[0])):
             firstRowSum -= grid[0][i]
 
-            ans = min(ans, max(firstRowSum, secondRowSum))
+            result = max(firstRowSum, secondRowSum)
+            # ans = min(ans, max(firstRowSum, secondRowSum))
+            if result<=ans:
+                ans = result
+            else:
+                return ans
             secondRowSum+=grid[1][i]
         return ans
 
