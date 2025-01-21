@@ -5,16 +5,14 @@ class Solution:
         firstRowSum = sum(grid[0])
         secondRowSum = 0
         ans = math.inf
-        for i in range(len(grid[0])):
-            firstRowSum -= grid[0][i]
-
-            result = max(firstRowSum, secondRowSum)
-            # ans = min(ans, max(firstRowSum, secondRowSum))
-            if result<=ans:
-                ans = result
+        for turnIdx in range(len(grid[0])):
+            firstRowSum -= grid[0][turnIdx]
+            bot2 = max(firstRowSum, secondRowSum)
+            if bot2<=ans:
+                ans = bot2
             else:
                 return ans
-            secondRowSum+=grid[1][i]
+            secondRowSum+=grid[1][turnIdx]
         return ans
 
 
