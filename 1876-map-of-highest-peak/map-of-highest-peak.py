@@ -1,9 +1,9 @@
 class Solution:
     def highestPeak(self, isWater: List[List[int]]) -> List[List[int]]:
-        row = len(isWater)
-        col = len(isWater[0])
-        ans = [[-1]*col for _ in range(row)]
         dirs = [(0,1),(1,0),(0,-1),(-1,0)]
+
+        row, col = len(isWater), len(isWater[0])
+        ans = [[-1]*col for _ in range(row)]
         queue = deque()
 
         for i in range(row):
@@ -14,12 +14,11 @@ class Solution:
         
         while queue:
             i,j = queue.popleft()
-            for dir in dirs:
-                ni = i+dir[0]
-                nj = j+dir[1]
-                if (0<=ni<row and 0<=nj<col) and ans[ni][nj] == -1:
-                    ans[ni][nj] = ans[i][j]+1
-                    queue.append((ni,nj))
+            for dx,dy in dirs:
+                x,y = i+dx, j+dy
+                if (0<=x<row and 0<=y<col) and ans[x][y] == -1:
+                    ans[x][y] = ans[i][j]+1
+                    queue.append((x,y))
         return ans
 
 
