@@ -4,7 +4,7 @@ class Solution:
         col = len(isWater[0])
         ans = [[-1]*col for _ in range(row)]
         dirs = [(0,1),(1,0),(0,-1),(-1,0)]
-        queue = []
+        queue = deque()
 
         for i in range(row):
             for j in range(col):
@@ -13,7 +13,7 @@ class Solution:
                     queue.append((i,j))
         
         while queue:
-            i,j = queue.pop(0)
+            i,j = queue.popleft()
             for dir in dirs:
                 ni = i+dir[0]
                 nj = j+dir[1]
