@@ -3,18 +3,15 @@ class Solution:
         dirs = [(0,1),(1,0),(0,-1),(-1,0)]
 
         row, col = len(isWater), len(isWater[0])
-        ans = []
+        ans = [[-1]*col for _ in range(row)]
         queue = deque()
 
         for i in range(row):
             temp = []
             for j in range(col):
                 if isWater[i][j]==1:
-                    temp.append(0)
+                    ans[i][j]=0
                     queue.append((i,j))
-                else:
-                    temp.append(-1)
-            ans.append(temp)
         
         while queue:
             i,j = queue.popleft()
