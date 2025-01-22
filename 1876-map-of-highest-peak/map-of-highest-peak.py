@@ -1,9 +1,9 @@
 class Solution:
-    _dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
     def _isValidCell(self, x, y, row, col):
         return 0 <= x < row and 0 <= y < col
 
     def highestPeak(self, isWater: List[List[int]]) -> List[List[int]]:
+        dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         row, col = len(isWater), len(isWater[0])
         ans = [[-1] * col for _ in range(row)]
         queue = deque()
@@ -20,7 +20,7 @@ class Solution:
             i, j = queue.popleft()
 
             # Get all neighbouring cells
-            for dx, dy in self._dirs:
+            for dx, dy in dirs:
                 x, y = i + dx, j + dy
                 # If un-visited and valid
                 if self._isValidCell(x, y, row, col) and ans[x][y] == -1:
