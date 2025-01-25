@@ -4,26 +4,22 @@ class Solution:
         sortedNums = sorted(nums)
         curr = 0
         numToGroup = {}
-        numToGroup[sortedNums[0]] = curr
+        numToGroup[sortedNums[0]]=curr
+        groupIdx = [0]
 
-        groupToList = {}
-        groupToList[curr] = deque([sortedNums[0]])
-
-        for i in range(1, n):
+        for i in range(1,n):
             if sortedNums[i]-sortedNums[i-1]>limit:
                 curr+=1
-            numToGroup[sortedNums[i]] = curr
+                groupIdx.append(i)
+            numToGroup[sortedNums[i]]=curr
+        
+        ans = []
+        for i in nums:
+            group = numToGroup[i]
+            ans.append(sortedNums[groupIdx[group]])
+            groupIdx[group]+=1
+        return ans
 
-            if curr not in groupToList:
-                groupToList[curr] = deque()
-            groupToList[curr].append(sortedNums[i])
-        
-        for i in range(n):
-            num = nums[i]
-            group = numToGroup[num]
-            nums[i] = groupToList[group].popleft()
-        
-        return nums
             
 
 
