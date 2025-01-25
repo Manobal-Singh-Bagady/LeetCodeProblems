@@ -9,7 +9,7 @@ class Solution:
             else:
                 groups.append([enum[i]])
         for group in groups:
-            vals = sorted([i[0] for i in group])
+            vals = [i[0] for i in group]
             idxs = sorted([i[1] for i in group])
             for i in range(len(group)):
                 nums[idxs[i]] = vals[i]
