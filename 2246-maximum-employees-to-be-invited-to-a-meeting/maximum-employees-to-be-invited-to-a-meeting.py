@@ -14,16 +14,17 @@ class Solution:
             curr = q.popleft()
             next = fav[curr]
 
-            depth[next] = max(depth[next], depth[curr]+1)
+            depth[next] = depth[curr]+1
             inDegree[next]-=1
             if (inDegree[next]==0):
                 q.append(next)
 
         for i in range(n):
             if inDegree[i]==0: continue
-            cycleLength = 0
-            curr = i
-            while (inDegree[curr]!=0):
+            cycleLength = 1
+            inDegree[i]=0
+            curr = fav[i]
+            while (curr!=i):
                 inDegree[curr] = 0
                 cycleLength+=1
                 curr = fav[curr]
