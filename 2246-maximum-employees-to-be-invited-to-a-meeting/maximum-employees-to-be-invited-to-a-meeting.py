@@ -1,22 +1,18 @@
 class Solution:
-    def maximumInvitations(self, favorite: List[int]) -> int:
-        n = len(favorite)
+    def maximumInvitations(self, fav: List[int]) -> int:
+        n = len(fav)
         longestCycle = 0
         twoCycleInvitations = 0
         inDegree = [0]*n
         depth = [1]*n
 
-        for i in range(n):
-            inDegree[favorite[i]]+=1
-
-        q = deque()
-        for i in range(n):
-            if inDegree[i]==0:
-                q.append(i)
+        for i in fav:
+            inDegree[i]+=1
+        q = deque(i for i in range(n) if inDegree[i]==0)
         
         while q:
             curr = q.popleft()
-            next = favorite[curr]
+            next = fav[curr]
 
             depth[next] = max(depth[next], depth[curr]+1)
             inDegree[next]-=1
@@ -30,9 +26,9 @@ class Solution:
             while (inDegree[curr]!=0):
                 inDegree[curr] = 0
                 cycleLength+=1
-                curr = favorite[curr]
+                curr = fav[curr]
             if cycleLength==2:
-                twoCycleInvitations+=depth[i]+depth[favorite[i]]
+                twoCycleInvitations+=depth[i]+depth[fav[i]]
             else:
                 longestCycle = max(longestCycle, cycleLength)
             
