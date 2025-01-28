@@ -1,53 +1,24 @@
 class Solution:
-    def countFishBFS(self, grid, visited, i, j, row, col):
-        dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        fishCount = 0
-
-        q = deque()
-        # insert the given node in q
-        q.append((i, j))
-        visited[i][j] = True
-
-        # start bfs
-        while q:
-            x, y = q.popleft()
-            fishCount += grid[x][y]
-            for dx, dy in dirs:
-                nx = x + dx
-                ny = y + dy
-                if (
-                    0 <= nx < row
-                    and 0 <= ny < col
-                    and not visited[nx][ny]
-                    and grid[nx][ny] > 0
-                ):
-                    visited[nx][ny] = True
-                    q.append((nx, ny))
-        return fishCount
-
-    def countFishDFS(self, grid, visited, i, j, row, col):
-        if not (0 <= i < row) or not (0 <= j < col) or visited[i][j] or grid[i][j] == 0:
+    def countFishDFS(self, grid, i, j):
+        row, col = len(grid), len(grid[0])
+        if i < 0 or i >= row or j < 0 or j >= col or grid[i][j] == 0:
             return 0
-        visited[i][j] = True
+        temp = grid[i][j]
+        grid[i][j] = 0
         return (
-            grid[i][j]
-            + self.countFishDFS(grid, visited, i, j + 1, row, col)
-            + self.countFishDFS(grid, visited, i + 1, j, row, col)
-            + self.countFishDFS(grid, visited, i, j - 1, row, col)
-            + self.countFishDFS(grid, visited, i - 1, j, row, col)
+            temp
+            + self.countFishDFS(grid, i + 1, j)
+            + self.countFishDFS(grid, i, j + 1)
+            + self.countFishDFS(grid, i, j - 1)
+            + self.countFishDFS(grid, i - 1, j)
         )
 
     def findMaxFish(self, grid: List[List[int]]) -> int:
-        row = len(grid)
-        col = len(grid[0])
+        row, col = len(grid), len(grid[0])
         maxFish = 0
-
-        visited = [[False] * col for _ in range(row)]
 
         for i in range(row):
             for j in range(col):
-                if grid[i][j] > 0 and not visited[i][j]:
-                    maxFish = max(
-                        maxFish, self.countFishDFS(grid, visited, i, j, row, col)
-                    )
+                if grid[i][j] > 0:
+                    maxFish = max(maxFish, self.countFishDFS(grid, i, j))
         return maxFish
