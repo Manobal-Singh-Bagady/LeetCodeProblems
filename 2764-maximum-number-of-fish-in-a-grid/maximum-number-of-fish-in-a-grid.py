@@ -1,5 +1,5 @@
 class Solution:
-    def countFish(self, grid, visited, i, j, row, col):
+    def countFishBFS(self, grid, visited, i, j, row, col):
         dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         fishCount = 0
 
@@ -25,6 +25,18 @@ class Solution:
                     q.append((nx, ny))
         return fishCount
 
+    def countFishDFS(self, grid, visited, i, j, row, col):
+        if not (0 <= i < row and 0 <= j < col and not visited[i][j] and grid[i][j] > 0):
+            return 0
+        visited[i][j] = True
+        return (
+            grid[i][j]
+            + self.countFishDFS(grid, visited, i, j + 1, row, col)
+            + self.countFishDFS(grid, visited, i + 1, j, row, col)
+            + self.countFishDFS(grid, visited, i, j - 1, row, col)
+            + self.countFishDFS(grid, visited, i - 1, j, row, col)
+        )
+
     def findMaxFish(self, grid: List[List[int]]) -> int:
         row = len(grid)
         col = len(grid[0])
@@ -36,6 +48,6 @@ class Solution:
             for j in range(col):
                 if grid[i][j] > 0 and not visited[i][j]:
                     maxFish = max(
-                        maxFish, self.countFish(grid, visited, i, j, row, col)
+                        maxFish, self.countFishDFS(grid, visited, i, j, row, col)
                     )
         return maxFish
