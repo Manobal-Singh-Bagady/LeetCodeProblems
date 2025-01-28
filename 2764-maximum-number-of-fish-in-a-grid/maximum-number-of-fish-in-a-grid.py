@@ -26,7 +26,7 @@ class Solution:
         return fishCount
 
     def countFishDFS(self, grid, visited, i, j, row, col):
-        if not (0 <= i < row and 0 <= j < col and not visited[i][j] and grid[i][j] > 0):
+        if not (0 <= i < row) or not (0 <= j < col) or visited[i][j] or grid[i][j] == 0:
             return 0
         visited[i][j] = True
         return (
