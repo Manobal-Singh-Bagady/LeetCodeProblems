@@ -15,10 +15,7 @@ class DSU:
         if x == y:
             return False
 
-        xSize = self.size[x]
-        ySize = self.size[y]
-
-        if xSize > ySize:
+        if self.size[x] > self.size[y]:
             self.parent[y] = x
             self.size[y] += self.size[x]
         else:
