@@ -3,11 +3,10 @@ class Solution:
         visited[src]=True
         if src==target:
             return True
-    
         found = False
         for node in gr[src]:
             if not visited[node]:
-                found = found or self.dfs(node, target, visited, gr)
+                found |= self.dfs(node, target, visited, gr)
         return found
 
 
