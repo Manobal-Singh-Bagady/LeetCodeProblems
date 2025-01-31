@@ -22,18 +22,8 @@ class Solution:
                 + getIslandSize(x + 1, y, color)
                 + getIslandSize(x - 1, y, color)
             )
-            # size = 1
-            # if x != 0 and grid[x - 1][y] == 1:
-            #     size += getIslandSize(x - 1, y, color)
-            # if y != 0 and grid[x][y - 1] == 1:
-            #     size += getIslandSize(x, y - 1, color)
-            # if x != n - 1 and grid[x + 1][y] == 1:
-            #     size += getIslandSize(x + 1, y, color)
-            # if y != n - 1 and grid[x][y + 1] == 1:
-            #     size += getIslandSize(x, y + 1, color)
-            # return size
 
-        sizes = {}
+        sizes = {0:0}
         colorId = 2
 
         # pre-compute component sizes
@@ -53,38 +43,40 @@ class Solution:
             for j in range(n):
                 if grid[i][j] == 0:
                     neighbours = set()
-                    newSize = 1
-                    if (
-                        i != 0
-                        and grid[i - 1][j] > 1
-                        and grid[i - 1][j] not in neighbours
-                    ):
-                        neighbour = grid[i - 1][j]
-                        neighbours.add(neighbour)
-                        newSize += sizes[neighbour]
-                    if (
-                        j != 0
-                        and grid[i][j - 1] > 1
-                        and grid[i][j - 1] not in neighbours
-                    ):
-                        neighbour = grid[i][j - 1]
-                        neighbours.add(neighbour)
-                        newSize += sizes[neighbour]
-                    if (
-                        i != n - 1
-                        and grid[i + 1][j] > 1
-                        and grid[i + 1][j] not in neighbours
-                    ):
-                        neighbour = grid[i + 1][j]
-                        neighbours.add(neighbour)
-                        newSize += sizes[neighbour]
-                    if (
-                        j != n - 1
-                        and grid[i][j + 1] > 1
-                        and grid[i][j + 1] not in neighbours
-                    ):
-                        neighbour = grid[i][j + 1]
-                        neighbours.add(neighbour)
-                        newSize += sizes[neighbour]
+                    for dx,dy in dirs:
+                        neighbours.add(getCell(i+dx,j+dy))
+                    newSize = 1 + sum(sizes[x] for x in neighbours)
+                    # if (
+                    #     i != 0
+                    #     and grid[i - 1][j] > 1
+                    #     and grid[i - 1][j] not in neighbours
+                    # ):
+                    #     neighbour = grid[i - 1][j]
+                    #     neighbours.add(neighbour)
+                    #     newSize += sizes[neighbour]
+                    # if (
+                    #     j != 0
+                    #     and grid[i][j - 1] > 1
+                    #     and grid[i][j - 1] not in neighbours
+                    # ):
+                    #     neighbour = grid[i][j - 1]
+                    #     neighbours.add(neighbour)
+                    #     newSize += sizes[neighbour]
+                    # if (
+                    #     i != n - 1
+                    #     and grid[i + 1][j] > 1
+                    #     and grid[i + 1][j] not in neighbours
+                    # ):
+                    #     neighbour = grid[i + 1][j]
+                    #     neighbours.add(neighbour)
+                    #     newSize += sizes[neighbour]
+                    # if (
+                    #     j != n - 1
+                    #     and grid[i][j + 1] > 1
+                    #     and grid[i][j + 1] not in neighbours
+                    # ):
+                    #     neighbour = grid[i][j + 1]
+                    #     neighbours.add(neighbour)
+                    #     newSize += sizes[neighbour]
                     maxSize = max(maxSize, newSize)
         return maxSize
