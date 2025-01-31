@@ -19,26 +19,28 @@ class Solution:
 
     def largestIsland(self, grid: List[List[int]]) -> int:
         row, col = len(grid), len(grid[0])
-        sizes = [0, 0]
+        sizes = {0: 0}
+        colorId = 2
 
         # pre-compute component sizes
         for i in range(row):
             for j in range(col):
                 if grid[i][j] == 1:
-                    sizes.append(self.getIslandSize(i, j, grid, len(sizes)))
+                    sizes[colorId] = self.getIslandSize(i, j, grid, colorId)
+                    colorId += 1
 
-        maxSize = max(sizes)
+        # flip each 0 and check new sizes
+        maxSize = max(sizes.values())
         for i in range(row):
             for j in range(col):
-                if grid[i][j] != 0:
-                    continue
-                neighbours = set()
-                neighbours.add(self.getCell(i, j + 1, grid))
-                neighbours.add(self.getCell(i + 1, j, grid))
-                neighbours.add(self.getCell(i, j - 1, grid))
-                neighbours.add(self.getCell(i - 1, j, grid))
-                newSize = 1
-                for color in neighbours:
-                    newSize+=sizes[color]
-                maxSize = max(maxSize,newSize)
+                if grid[i][j] == 0:
+                    neighbours = set()
+                    neighbours.add(self.getCell(i, j + 1, grid))
+                    neighbours.add(self.getCell(i + 1, j, grid))
+                    neighbours.add(self.getCell(i, j - 1, grid))
+                    neighbours.add(self.getCell(i - 1, j, grid))
+                    newSize = 1
+                    for color in neighbours:
+                        newSize += sizes[color]
+                    maxSize = max(maxSize, newSize)
         return maxSize
