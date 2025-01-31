@@ -1,19 +1,23 @@
 class Solution:
     def largestIsland(self, grid: List[List[int]]) -> int:
         n = len(grid)
+        dirs = [(0,1),(1,0),(0,-1),(-1,0)]
+
+        # get valid cell
+        def getCell(x,y):
+            if x<0 or y<0 or x>=n or y>=n:
+                return 0
+            else:
+                return grid[x][y]
 
         # simple dfs
         def getIslandSize(x, y, color):
+            if getCell(x,y)!=1:
+                return 0
             grid[x][y] = color
             size = 1
-            if x != 0 and grid[x - 1][y] == 1:
-                size += getIslandSize(x - 1, y, color)
-            if y != 0 and grid[x][y - 1] == 1:
-                size += getIslandSize(x, y - 1, color)
-            if x != n - 1 and grid[x + 1][y] == 1:
-                size += getIslandSize(x + 1, y, color)
-            if y != n - 1 and grid[x][y + 1] == 1:
-                size += getIslandSize(x, y + 1, color)
+            for dx,dy in dirs:
+                size+=getIslandSize(x+dx,y+dy, color)
             return size
 
         sizes = {}
