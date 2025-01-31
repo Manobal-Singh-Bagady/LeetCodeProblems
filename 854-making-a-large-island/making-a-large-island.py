@@ -1,22 +1,4 @@
 class Solution:
-    # def getCell(self, x, y, grid):
-    #     if x < 0 or y < 0 or x >= len(grid) or y >= len(grid[0]):
-    #         return 0
-    #     else:
-    #         return grid[x][y]
-
-    # def getIslandSize(self, x, y, grid, color):
-    #     if self.getCell(x, y, grid) != 1:
-    #         return 0
-    #     grid[x][y] = color
-    #     return (
-    #         1
-    #         + self.getIslandSize(x, y + 1, grid, color)
-    #         + self.getIslandSize(x + 1, y, grid, color)
-    #         + self.getIslandSize(x, y - 1, grid, color)
-    #         + self.getIslandSize(x - 1, y, grid, color)
-    #     )
-
     def largestIsland(self, grid: List[List[int]]) -> int:
         n = len(grid)
 
