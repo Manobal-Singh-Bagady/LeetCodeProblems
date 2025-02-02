@@ -6,7 +6,10 @@ class Solution:
                 count+=1
         if nums[-1]>nums[0]:
             count+=1
-        return True if count<=1 else False
+        if count<=1:
+            return True
+        else:
+            return False
         
 
         
