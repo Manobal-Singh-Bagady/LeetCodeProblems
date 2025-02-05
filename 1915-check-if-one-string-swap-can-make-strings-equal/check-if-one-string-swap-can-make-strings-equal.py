@@ -11,14 +11,4 @@ class Solution:
         #     return False
         # return True
 
-        return (
-            s1 == s2
-            or sum(a != b for a, b in zip(s1, s2)) <= 2
-            and Counter(s1) == Counter(s2)
-        )
-
-        # return (
-        #     len(s1) == len(s2)
-        #     and Counter(s1) == Counter(s2)
-        #     and sum(a != b for a, b in zip(s1, s2)) in (0, 2)
-        # )
+        return sum(a != b for a, b in zip(s1, s2)) <= 2 and Counter(s1) == Counter(s2)
