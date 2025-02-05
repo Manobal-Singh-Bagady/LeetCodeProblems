@@ -3,7 +3,7 @@ class Solution:
         if s1 == s2:
             return True
 
-        diff = sum(1 for i in range(len(s1)) if s1[i] != s2[i])
+        diff = sum(1 for a,b in zip(s1,s2) if a!=b)
         if diff > 2:
             return False
 
