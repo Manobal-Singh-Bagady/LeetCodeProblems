@@ -14,8 +14,8 @@ class Solution:
                     distinct -= 1
             balls[ball] = color
             if color not in colors:
-                colors[color] = 0
                 distinct += 1
+                colors[color] = 0
             colors[color] += 1
             ans.append(distinct)
         return ans
