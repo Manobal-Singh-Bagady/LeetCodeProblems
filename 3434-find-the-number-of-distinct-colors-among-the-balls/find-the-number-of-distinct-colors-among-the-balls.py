@@ -2,9 +2,9 @@ class Solution:
     def queryResults(self, limit: int, queries: List[List[int]]) -> List[int]:
         ans = []
 
+        distinct = 0
         balls = {}
         colors = {}
-        distinct = 0
         for ball, color in queries:
             if ball in balls:
                 prevColor = balls[ball]
