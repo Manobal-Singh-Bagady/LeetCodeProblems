@@ -10,7 +10,6 @@ class Solution:
                 prevColor = balls[ball]
                 colors[prevColor] -= 1
                 if colors[prevColor] == 0:
-                    del colors[prevColor]
                     distinct -= 1
             balls[ball] = color
             if color in colors:
