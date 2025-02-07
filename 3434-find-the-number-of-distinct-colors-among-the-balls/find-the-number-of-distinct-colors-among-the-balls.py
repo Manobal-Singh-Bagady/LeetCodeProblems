@@ -10,12 +10,10 @@ class Solution:
                 prevColor = balls[ball]
                 colors[prevColor] -= 1
                 if colors[prevColor] == 0:
-                    del colors[prevColor]
                     distinct -= 1
             balls[ball] = color
-            if color not in colors:
-                distinct += 1
-                colors[color] = 0
-            colors[color] += 1
+            colors[color]=colors.get(color,0)+1
+            if colors[color]==1:
+                distinct+=1
             ans.append(distinct)
         return ans
