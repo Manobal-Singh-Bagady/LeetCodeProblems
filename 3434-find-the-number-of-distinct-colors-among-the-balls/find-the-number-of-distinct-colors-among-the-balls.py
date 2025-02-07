@@ -17,7 +17,6 @@ class Solution:
                 colors[color] += 1
             else:
                 colors[color] = 1
-            if colors[color]==1:
                 distinct += 1
             ans.append(distinct)
         return ans
