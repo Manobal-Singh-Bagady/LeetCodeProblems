@@ -1,7 +1,6 @@
 class Solution:
     def countBadPairs(self, nums: List[int]) -> int:
-        diffArr = [num - i for i, num in enumerate(nums)]
-        counts = Counter(diffArr)
+        counts = Counter([num - i for i, num in enumerate(nums)])
 
         n = len(nums)
         totalCombinations = n * (n - 1) // 2  # nC2 total combinations
