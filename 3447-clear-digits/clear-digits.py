@@ -1,11 +1,11 @@
 class Solution:
     def clearDigits(self, s: str) -> str:
-        ans = []
-        for i in s:
-            if i.isnumeric():
-                ans.pop()
+        s = list(s)
+        beg = 0
+        for i in range(len(s)):
+            if s[i].isnumeric():
+                beg-=1
             else:
-                ans.append(i)
-        return "".join(ans)
-                
-        
+                s[beg] = s[i]
+                beg+=1
+        return "".join(s[:beg])
