@@ -7,15 +7,11 @@ class Solution:
         return digitSum
 
     def maximumSum(self, nums: List[int]) -> int:
-        pairs = []
-        for i in nums:
-            pairs.append((self.digitSum(i), i))
-        pairs.sort()
-
+        digitSums = [0] * 82
         ans = -1
-        for i in range(len(nums) - 1):
-            s1, num1 = pairs[i]
-            s2, num2 = pairs[i + 1]
-            if s1 == s2:
-                ans = max(ans, num1 + num2)
+        for num in nums:
+            digitSum = self.digitSum(num)
+            if digitSums[digitSum] > 0:
+                ans = max(ans, digitSums[digitSum] + num)
+            digitSums[digitSum] = max(digitSums[digitSum], num)
         return ans
