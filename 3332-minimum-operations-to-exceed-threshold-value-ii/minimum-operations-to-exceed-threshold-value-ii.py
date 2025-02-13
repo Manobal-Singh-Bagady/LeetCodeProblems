@@ -3,7 +3,9 @@ class Solution:
         heapify(nums)
         count = 0
         while nums[0] < k:
+            x = heappop(nums)
+            y = heappop(nums)
             # Since x is popped before y, x <= y.
-            heapq.heappush(nums, heappop(nums) * 2 + heappop(nums))
+            heapq.heappush(nums, x * 2 + y)
             count += 1
         return count
