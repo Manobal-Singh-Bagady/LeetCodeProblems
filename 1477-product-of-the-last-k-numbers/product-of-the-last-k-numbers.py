@@ -10,7 +10,7 @@ class ProductOfNumbers:
             self.product.append(self.product[-1] * num)
 
     def getProduct(self, k: int) -> int:
-        if k > len(self.product)-1:
+        if k > len(self.product) - 1:
             return 0
         return self.product[-1] // self.product[-1 - k]
 
