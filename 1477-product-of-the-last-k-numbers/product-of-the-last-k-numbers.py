@@ -1,11 +1,9 @@
 class ProductOfNumbers:
 
     def __init__(self):
-        self.numbers = []
         self.product = [1]
 
     def add(self, num: int) -> None:
-        self.numbers.append(num)
         if self.product:
             self.product.append(self.product[-1] * num)
         else:
@@ -14,10 +12,10 @@ class ProductOfNumbers:
             self.product = [1]
 
     def getProduct(self, k: int) -> int:
-        if k+1 > len(self.product):
+        if k + 1 > len(self.product):
             return 0
         else:
-            return self.product[-1] // self.product[-(k+1)]
+            return self.product[-1] // self.product[-(k + 1)]
 
 
 # Your ProductOfNumbers object will be instantiated and called as such:
