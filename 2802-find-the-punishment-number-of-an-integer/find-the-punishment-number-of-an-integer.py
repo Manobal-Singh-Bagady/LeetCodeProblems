@@ -3,6 +3,9 @@ class Solution:
         if not square:
             return num == 0
 
+        if num < 0:
+            return False
+
         sum = 0
         for i in range(len(square)):
             sum = sum * 10 + int(square[i])
