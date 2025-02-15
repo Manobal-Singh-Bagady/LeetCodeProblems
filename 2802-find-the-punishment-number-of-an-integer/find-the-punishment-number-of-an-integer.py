@@ -1,4 +1,36 @@
 class Solution:
+    squares = {
+        1,
+        9,
+        10,
+        36,
+        45,
+        55,
+        82,
+        91,
+        99,
+        100,
+        235,
+        297,
+        369,
+        370,
+        379,
+        414,
+        657,
+        675,
+        703,
+        756,
+        792,
+        909,
+        918,
+        945,
+        964,
+        990,
+        991,
+        999,
+        1000,
+    }
+
     def canPartition(self, square, num):
         if not square:
             return num == 0
@@ -29,10 +61,11 @@ class Solution:
         )
 
     def punishmentNumber(self, n: int) -> int:
-        ans = 0
-        for i in range(1, n + 1):
-            squared = i * i
-            # if self.canPartition(str(squared), i):
-            if self.canPartition2(squared, i):
-                ans += squared
-        return ans
+        # ans = 0
+        # for i in range(1, n + 1):
+        #     squared = i * i
+        #     # if self.canPartition(str(squared), i):
+        #     if self.canPartition2(squared, i):
+        #         ans += squared
+        # return ans
+        return sum(i*i for i in self.squares if i<=n)
