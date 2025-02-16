@@ -2,7 +2,6 @@ class Solution:
     def constructDistancedSequence(self, n: int) -> List[int]:
         ans = [0] * (2 * n - 1)
         used = set()
-
         def generateSeq(i: int) -> bool:
             if i == len(ans):
                 return True
