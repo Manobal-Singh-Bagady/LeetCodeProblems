@@ -1,17 +1,17 @@
 class Solution:
     def constructDistancedSequence(self, n: int) -> List[int]:
         ans = [0] * (2 * n - 1)
-        used = [False] * (n + 1)
+        used = set()
 
-        def generateSeq(i):
+        def generateSeq(i: int) -> bool:
             if i == len(ans):
                 return True
             if ans[i]:
                 return generateSeq(i + 1)
             for num in range(n, 0, -1):
-                if used[num]:
+                if num in used:
                     continue
-                used[num] = True
+                used.add(num)
                 ans[i] = num
                 if num == 1:
                     if generateSeq(i + 1):
@@ -22,7 +22,7 @@ class Solution:
                         return True
                     ans[num + i] = 0
                 ans[i] = 0
-                used[num] = False
+                used.remove(num)
             return False
 
         generateSeq(0)
