@@ -8,15 +8,15 @@ class Solution:
     def generateSequence(
         self, sequence: List[int], used: List[bool], index: int, n: int
     ) -> bool:
-        if index == len(sequence):
+        if index == (2 * n - 1):
             return True
         if sequence[index] != 0:
             return self.generateSequence(sequence, used, index + 1, n)
         for num in range(n, 0, -1):
             if used[num]:
                 continue
-            nextIndex = index if num == 1 else num + index
-            if num > 1 and (nextIndex >= len(sequence) or sequence[nextIndex] != 0):
+            nextIndex = index if num == 1 else index + num
+            if num > 1 and (nextIndex >= (2 * n - 1) or sequence[nextIndex] != 0):
                 continue
             sequence[index] = sequence[nextIndex] = num
             used[num] = True
