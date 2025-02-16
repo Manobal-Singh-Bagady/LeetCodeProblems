@@ -4,7 +4,7 @@ class Solution:
         used = [False] * (n + 1)
 
         def generateSeq(i: int) -> bool:
-            if i == (2 * n - 1):
+            if i == len(ans):
                 return True
             if ans[i]:
                 return generateSeq(i + 1)
@@ -13,14 +13,14 @@ class Solution:
                     continue
                 used[num] = True
                 ans[i] = num
-                if num==1:
-                    if generateSeq(i+1):
+                if num == 1:
+                    if generateSeq(i + 1):
                         return True
-                elif num+i<(2*n-1) and ans[num+i]==0:
-                    ans[num+i]=num
-                    if generateSeq(i+1):
+                elif num + i < len(ans) and ans[num + i] == 0:
+                    ans[num + i] = num
+                    if generateSeq(i + 1):
                         return True
-                    ans[num+i]=0
+                    ans[num + i] = 0
                 ans[i] = 0
                 used[num] = False
             return False
