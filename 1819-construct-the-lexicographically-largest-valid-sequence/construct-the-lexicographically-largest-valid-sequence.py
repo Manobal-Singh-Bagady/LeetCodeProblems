@@ -1,4 +1,10 @@
 class Solution:
+    def constructDistancedSequence(self, n: int) -> List[int]:
+        ans = [0] * (2 * n - 1)
+        used = [False] * (n + 1)
+        self.generateSequence(ans, used, 0, n)
+        return ans
+
     def generateSequence(
         self, sequence: List[int], used: List[bool], index: int, n: int
     ) -> bool:
@@ -19,9 +25,3 @@ class Solution:
             sequence[index] = sequence[nextIndex] = 0
             used[num] = False
         return False
-
-    def constructDistancedSequence(self, n: int) -> List[int]:
-        ans = [0] * (2 * n - 1)
-        used = [False] * (n + 1)
-        self.generateSequence(ans, used, 0, n)
-        return ans
