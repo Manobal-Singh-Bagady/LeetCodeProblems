@@ -3,7 +3,7 @@ class Solution:
         ans = [0] * (2 * n - 1)
         used = [False] * (n + 1)
 
-        def generateSeq(i: int) -> bool:
+        def generateSeq(i):
             if i == len(ans):
                 return True
             if ans[i]:
