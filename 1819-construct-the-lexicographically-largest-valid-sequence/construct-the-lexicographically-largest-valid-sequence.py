@@ -7,10 +7,10 @@ class Solution:
         if sequence[index] != 0:
             return self.generateSequence(sequence, used, index + 1, n)
         for num in range(n, 0, -1):
+            if used[num]:
+                continue
             nextIndex = index if num == 1 else num + index
-            if used[num] or (
-                num > 1 and (nextIndex >= len(sequence) or sequence[nextIndex] != 0)
-            ):
+            if num > 1 and (nextIndex >= len(sequence) or sequence[nextIndex] != 0):
                 continue
             sequence[index] = sequence[nextIndex] = num
             used[num] = True
