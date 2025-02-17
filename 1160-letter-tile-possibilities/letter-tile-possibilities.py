@@ -2,7 +2,7 @@ class Solution:
     def genSeq(self, curr: str, seq: set, used: List[bool], tiles: str):
         seq.add(curr)
         for i in range(len(tiles)):
-            if not used[i]:
+            if not used[i] and curr+tiles[i] not in seq:
                 used[i] = True
                 self.genSeq(curr + tiles[i], seq, used, tiles)
                 used[i] = False
