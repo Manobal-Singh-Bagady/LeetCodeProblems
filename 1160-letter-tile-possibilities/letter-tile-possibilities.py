@@ -13,5 +13,5 @@ class Solution:
     def numTilePossibilities(self, tiles: str) -> int:
         count = [0]*26
         for i in tiles:
-            count[ord(i)-ord('A')]+=1
+            count[ord(i)-65]+=1
         return self.genCount(count)
