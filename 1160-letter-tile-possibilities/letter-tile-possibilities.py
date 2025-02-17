@@ -1,7 +1,7 @@
 class Solution:
-    def genCount(self, freq: List[int]):
+    def genCount(self, freq: Dict[str, int]):
         total = 0
-        for i in range(26):
+        for i in freq:
             if freq[i] == 0:
                 continue
             total += 1
@@ -11,7 +11,5 @@ class Solution:
         return total
 
     def numTilePossibilities(self, tiles: str) -> int:
-        count = [0]*26
-        for i in tiles:
-            count[ord(i)-65]+=1
+        count = Counter(tiles)
         return self.genCount(count)
