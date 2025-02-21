@@ -9,17 +9,15 @@ class FindElements:
         self.seen = set()
         q = deque([(root, 0)])
         while q:
-            curr , val = q.popleft()
+            curr, val = q.popleft()
             self.seen.add(val)
             if curr.left:
-                q.append((curr.left, 2*val+1))
+                q.append((curr.left, 2 * val + 1))
             if curr.right:
-                q.append((curr.right, 2*val+2))
-        
+                q.append((curr.right, 2 * val + 2))
 
     def find(self, target: int) -> bool:
         return target in self.seen
-        
 
 
 # Your FindElements object will be instantiated and called as such:
