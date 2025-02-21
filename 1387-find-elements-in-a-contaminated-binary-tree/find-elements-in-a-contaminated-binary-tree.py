@@ -22,9 +22,7 @@ class FindElements:
         
 
     def find(self, target: int) -> bool:
-        if target in self.seen:
-            return True
-        return False
+        return target in self.seen
         
         
 
