@@ -10,9 +10,8 @@ class Solution:
                 equal+=1
             elif i>pivot:
                 greater.append(i)
-        ans = []
-        ans += less
-        ans += [pivot]*equal
-        ans += greater
-        return ans
+        
+        less.extend([pivot]*equal)
+        less.extend(greater)
+        return less
         
