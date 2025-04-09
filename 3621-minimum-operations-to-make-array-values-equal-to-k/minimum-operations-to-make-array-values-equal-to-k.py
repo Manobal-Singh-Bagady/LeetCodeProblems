@@ -1,11 +1,9 @@
 class Solution:
     def minOperations(self, nums: List[int], k: int) -> int:
-        if all(i==k for i in nums):
-            return 0
-        if any(i<k for i in nums):
-            return -1
         ans = set()
         for i in nums:
-            if i>k:
+            if i<k:
+                return -1
+            elif i>k:
                 ans.add(i)
-        return len(ans) or -1
+        return len(ans)
