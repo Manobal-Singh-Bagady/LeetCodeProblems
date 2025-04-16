@@ -13,7 +13,7 @@ class Solution:
 
             while pairs >= k:
                 ans += n - r
-                pairs -= count[nums[l]]-1
                 count[nums[l]]-=1
+                pairs -= count[nums[l]]
                 l += 1
         return ans
