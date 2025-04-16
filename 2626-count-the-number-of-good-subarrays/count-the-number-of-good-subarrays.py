@@ -1,6 +1,6 @@
 class Solution:
     def countGood(self, nums: List[int], k: int) -> int:
-        count = Counter()
+        count = defaultdict(int)
         l = 0
         n = len(nums)
 
