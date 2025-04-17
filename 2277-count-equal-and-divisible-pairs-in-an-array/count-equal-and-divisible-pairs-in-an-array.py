@@ -5,7 +5,7 @@ class Solution:
 
         for i in range(len(nums)):
             for j in num_indexes[nums[i]]:
-                if i*j%k==0:
-                    ans+=1
+                if i * j % k == 0:
+                    ans += 1
             num_indexes[nums[i]].append(i)
         return ans
