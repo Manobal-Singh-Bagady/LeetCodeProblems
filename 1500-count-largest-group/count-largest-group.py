@@ -1,8 +1,13 @@
 class Solution:
+    def countDigits(self, n):
+        count = 0
+        while n:
+            count += n%10
+            n//=10
+        return count
+
     def countLargestGroup(self, n: int) -> int:
-        count = Counter()
+        mpp = defaultdict(int)
         for i in range(1, n+1):
-            digitSum = sum(int(x) for x in str(i))
-            count[digitSum]+=1
-        maxCount =  max(count.values())
-        return sum(1 for v in count.values() if v==maxCount)
+            mpp[self.countDigits(i)]+=1
+        return list(mpp.values()).count(max(mpp.values()))
