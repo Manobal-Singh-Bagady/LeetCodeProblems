@@ -10,4 +10,7 @@ class Solution:
         mpp = defaultdict(int)
         for i in range(1, n+1):
             mpp[self.countDigits(i)]+=1
-        return list(mpp.values()).count(max(mpp.values()))
+        values = list(mpp.values())
+        maxCount = max(values)
+        return values.count(maxCount)
+        
